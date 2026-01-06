@@ -151,11 +151,25 @@
   }
 }
 
+.prize-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+
+.prize-rank {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #667eea;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .prize-name {
   font-weight: 600;
   font-size: 1.1rem;
   color: #333;
-  flex: 1;
 }
 
 .arrow {
@@ -370,6 +384,10 @@
     flex-direction: column;
     gap: 10px;
     text-align: center;
+  }
+
+  .prize-info {
+    align-items: center;
   }
 
   .arrow {
