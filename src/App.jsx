@@ -113,6 +113,30 @@ function App() {
     }
   }
 
+  const handleExport = () => {
+    if (results.length === 0) return
+
+    // CSV format
+    const content = 'ሽልማት,የሽልማት ስም,ትኬት ቁጥር\n' +
+      results.map(result => 
+        `"${result.prize}","${result.prizeName}",${result.ticket}`
+      ).join('\n') + '\n'
+
+    const filename = `lottery_results_${new Date().toISOString().split('T')[0]}.csv`
+    const mimeType = 'text/csv;charset=utf-8;'
+
+    // Create blob and download
+    const blob = new Blob(['\ufeff' + content], { type: mimeType })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = filename
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <div className="app">
       <div className="container">
@@ -146,6 +170,15 @@ function App() {
           >
             እንደገና ጀምር
           </button>
+          {results.length > 0 && (
+            <button
+              className="btn btn-export"
+              onClick={handleExport}
+              disabled={isSpinning}
+            >
+              Export CSV
+            </button>
+          )}
         </div>
 
         {/* Lottery Wheel Spinner */}

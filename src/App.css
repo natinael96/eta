@@ -56,6 +56,7 @@
   display: flex;
   gap: 15px;
   justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 40px;
 }
 
@@ -97,6 +98,24 @@
   background: #e0e0e0;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-export {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+  color: white;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+}
+
+.btn-export:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+
+.btn-export:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .results {
