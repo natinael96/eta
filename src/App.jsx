@@ -7,14 +7,14 @@ const STORAGE_KEY = 'ticketDrawResults'
 const REVEAL_DELAY = 800 // milliseconds between each reveal
 
 const PRIZES = [
-  { rank: '1st Prize', name: 'Smart Phone' },
-  { rank: '2nd Prize', name: 'በገና' },
-  { rank: '3rd Prize', name: 'AirPods' },
-  { rank: '4th Prize', name: 'መጽሐፍ ቅዱስ' },
-  { rank: '5th Prize', name: 'አሐቲ ድንግል' },
-  { rank: '6th Prize', name: 'ነጠላ' },
-  { rank: '7th Prize', name: 'Unlimited Package' },
-  { rank: '8th Prize', name: 'ሰዕለ አድኅኖ' }
+  { rank: '1ኛ ሽልማት', name: 'Smart Phone' },
+  { rank: '2ኛ ሽልማት', name: 'በገና' },
+  { rank: '3ኛ ሽልማት', name: 'AirPods' },
+  { rank: '4ኛ ሽልማት', name: 'መጽሐፍ ቅዱስ' },
+  { rank: '5ኛ ሽልማት', name: 'አሐቲ ድንግል' },
+  { rank: '6ኛ ሽልማት', name: 'ነጠላ' },
+  { rank: '7ኛ ሽልማት', name: 'Unlimited Package' },
+  { rank: '8ኛ ሽልማት', name: 'ሰዕለ አድኅኖ' }
 ]
 
 function App() {
@@ -99,7 +99,7 @@ function App() {
 
   const handleReset = () => {
     const confirmed = window.confirm(
-      'Are you sure you want to reset the draw? This will clear all results and allow a new draw.'
+      'እጣ ማውጫውን እንደገና ማስጀመር እንደሚፈልጉ እርግጠኛ ነዎት? ይህ ሁሉንም ውጤቶች ያጸዳል እና አዲስ ያወጣል።'
     )
     
     if (confirmed) {
@@ -117,9 +117,9 @@ function App() {
     <div className="app">
       <div className="container">
         <header className="header">
-          <img src="/5kilo-gbigubae-logo.png" alt="Logo" className="logo" />
-          <h1>🎟️ Ticket Draw</h1>
-          <p className="subtitle">Total Tickets: {TOTAL_TICKETS}</p>
+          <img src="/5kilo-gbigubae-logo.png" alt="ሎጎ" className="logo" />
+          <h1>🎟️ የትኬት እጣዎች</h1>
+          <p className="subtitle">ጠቅላላ ትኬቶች: {TOTAL_TICKETS}</p>
         </header>
 
         <div className="controls">
@@ -128,7 +128,7 @@ function App() {
               className="btn btn-primary"
               onClick={handleDraw}
             >
-              Draw Winners
+              አሸናፊ እጣዎች 
             </button>
           ) : (
             <button
@@ -136,7 +136,7 @@ function App() {
               onClick={handleRevealNext}
               disabled={isSpinning || drawComplete}
             >
-              {isSpinning ? 'Spinning...' : drawComplete ? 'All Winners Revealed' : `Reveal ${PRIZES[currentRevealIndex].rank} - ${PRIZES[currentRevealIndex].name}`}
+              {isSpinning ? 'በመሽከርከር ላይ...' : drawComplete ? 'ሁሉም አሸናፊዎች ተገልጸዋል' : `${PRIZES[currentRevealIndex].rank} - ${PRIZES[currentRevealIndex].name} አሳይ`}
             </button>
           )}
           <button
@@ -144,7 +144,7 @@ function App() {
             onClick={handleReset}
             disabled={isSpinning}
           >
-            Reset
+            እንደገና ጀምር
           </button>
         </div>
 
@@ -164,7 +164,7 @@ function App() {
               </div>
               <div className="wheel-pointer"></div>
             </div>
-            <p className="spinning-text">Drawing Winner...</p>
+            <p className="spinning-text">አሸናፊ በመምረጥ ላይ...</p>
           </div>
         )}
 
@@ -186,7 +186,7 @@ function App() {
                     </div>
                     <span className="arrow">→</span>
                     {isVisible ? (
-                      <span className="ticket-number">Ticket #{result.ticket}</span>
+                      <span className="ticket-number">ትኬት #{result.ticket}</span>
                     ) : (
                       <span className="ticket-number placeholder">?</span>
                     )}
@@ -196,7 +196,7 @@ function App() {
             </div>
           ) : (
             <div className="no-results">
-              <p>No draw results yet. Click "Draw Winners" to start.</p>
+              <p>እስካሁን የእጣዎች ውጤት የለም። ለመጀመር "እጣዎችን" ይጫኑ።</p>
             </div>
           )}
         </div>
