@@ -172,7 +172,7 @@ function App() {
           {results.length > 0 ? (
             <div className="results-list">
               {PRIZES.map((prize, index) => {
-                const result = visibleResults.find(r => r.prize === prize)
+                const result = visibleResults.find(r => r.prize === prize.rank)
                 const isVisible = result !== undefined
                 
                 return (
@@ -180,7 +180,10 @@ function App() {
                     key={index} 
                     className={`result-item ${isVisible ? 'revealed' : 'hidden'}`}
                   >
-                    <span className="prize-name">{prize}</span>
+                    <div className="prize-info">
+                      <span className="prize-rank">{prize.rank}</span>
+                      <span className="prize-name">{prize.name}</span>
+                    </div>
                     <span className="arrow">→</span>
                     {isVisible ? (
                       <span className="ticket-number">Ticket #{result.ticket}</span>
