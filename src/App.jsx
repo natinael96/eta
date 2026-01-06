@@ -204,32 +204,58 @@ function App() {
         <div className="results">
           {results.length > 0 ? (
             <div className="results-list">
-              {PRIZES.map((prize, index) => {
-                const result = visibleResults.find(r => r.prize === prize.rank)
-                const isVisible = result !== undefined
-                
-                return (
-                  <div 
-                    key={index} 
-                    className={`result-item ${isVisible ? 'revealed' : 'hidden'}`}
-                  >
-                    <div className="prize-info">
-                      <span className="prize-rank">{prize.rank}</span>
-                      <span className="prize-name">{prize.name}</span>
+              <div className="results-column results-column-left">
+                {PRIZES.slice(0, 4).map((prize, index) => {
+                  const result = visibleResults.find(r => r.prize === prize.rank)
+                  const isVisible = result !== undefined
+                  
+                  return (
+                    <div 
+                      key={index} 
+                      className={`result-item ${isVisible ? 'revealed' : 'hidden'}`}
+                    >
+                      <div className="prize-info">
+                        <span className="prize-rank">{prize.rank}</span>
+                        <span className="prize-name">{prize.name}</span>
+                      </div>
+                      <span className="arrow">→</span>
+                      {isVisible ? (
+                        <span className="ticket-number">ትኬት #{result.ticket}</span>
+                      ) : (
+                        <span className="ticket-number placeholder">?</span>
+                      )}
                     </div>
-                    <span className="arrow">→</span>
-                    {isVisible ? (
-                      <span className="ticket-number">ትኬት #{result.ticket}</span>
-                    ) : (
-                      <span className="ticket-number placeholder">?</span>
-                    )}
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
+              <div className="results-column results-column-right">
+                {PRIZES.slice(4, 8).map((prize, index) => {
+                  const result = visibleResults.find(r => r.prize === prize.rank)
+                  const isVisible = result !== undefined
+                  
+                  return (
+                    <div 
+                      key={index + 4} 
+                      className={`result-item ${isVisible ? 'revealed' : 'hidden'}`}
+                    >
+                      <div className="prize-info">
+                        <span className="prize-rank">{prize.rank}</span>
+                        <span className="prize-name">{prize.name}</span>
+                      </div>
+                      <span className="arrow">→</span>
+                      {isVisible ? (
+                        <span className="ticket-number">ትኬት #{result.ticket}</span>
+                      ) : (
+                        <span className="ticket-number placeholder">?</span>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           ) : (
             <div className="no-results">
-              <p>እስካሁን የእጣዎች ውጤት የለም። ለመጀመር "እጣዎችን" ይጫኑ።</p>
+              <p>እስካሁን የእጣዎች ውጤት የለም። ለመጀመር "Button" ይጫኑ።</p>
             </div>
           )}
         </div>

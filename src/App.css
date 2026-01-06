@@ -6,7 +6,7 @@
 
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,9 +19,9 @@
 .container {
   background: white;
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  max-width: 600px;
+  max-width: 1200px;
   width: 100%;
 }
 
@@ -124,8 +124,24 @@
 
 .results-list {
   display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.results-column {
+  display: flex;
   flex-direction: column;
   gap: 15px;
+  flex: 1;
+}
+
+.results-column-left {
+  margin-right: 10px;
+}
+
+.results-column-right {
+  margin-left: 10px;
 }
 
 .result-item {
@@ -397,6 +413,15 @@
 
   .btn {
     width: 100%;
+  }
+
+  .results-list {
+    flex-direction: column;
+  }
+
+  .results-column {
+    width: 100%;
+    margin: 0;
   }
 
   .result-item {
